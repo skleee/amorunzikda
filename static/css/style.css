@@ -1,0 +1,131 @@
+.btn {
+    font-weight: 700;
+}
+
+.btn-xl {
+    font-size: 18px;
+    padding: 20px 40px;
+}
+
+.btn-primary {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.btn-primary:active, .btn-primary:focus, .btn-primary:hover {
+    background-color: #4c4b55 ;
+    border-color: #4c4b55 ;
+    color: white;
+}
+
+img::selection {
+    background: transparent;
+}
+
+img::-moz-selection {
+    background: transparent;
+}
+
+
+#mainNav {
+    background-color: #212529;
+}
+
+#mainNav .navbar-brand {
+    color: #000000;
+}
+
+#mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+    color: #4c4b55;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link {
+    font-size: 90%;
+    font-weight: 400;
+    padding: 0.75em 0;
+    letter-spacing: 1px;
+    color:#000000;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
+    color: #4c4b55;
+}
+
+@media (min-width: 992px) {
+#mainNav {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
+    transition: padding-top 0.3s, padding-bottom 0.3s;
+    border: none;
+    background-color: transparent;
+}
+#mainNav .navbar-brand {
+    font-size: 1.75em;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+#mainNav .navbar-nav .nav-item .nav-link {
+    padding: 1.1em 1em !important;
+}
+#mainNav.navbar-shrink {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: #212529;
+}
+#mainNav.navbar-shrink .navbar-brand {
+    font-size: 1.25em;
+    padding: 12px 0;
+}
+}
+
+
+header.masthead {
+    text-align: center;
+    color: black;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+}
+
+header.masthead .intro-text {
+    padding-top: 150px;
+    padding-bottom: 130px;
+}
+
+header.masthead .intro-text .intro-lead-in {
+    font-size: 22px;
+    font-style: italic;
+    line-height: 22px;
+    margin-bottom: 25px;
+}
+
+header.masthead .intro-text .intro-heading {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    margin-bottom: 25px;
+}
+
+@media (min-width: 768px) {
+header.masthead .intro-text {
+    padding-top: 80;
+    padding-bottom: 130px;
+}
+header.masthead .intro-text .intro-lead-in {
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 20px;
+}
+header.masthead .intro-text .intro-heading {
+    font-size: 65px;
+    font-weight: 700;
+    line-height: 75px;
+    margin-bottom: 40px;
+}
+}
+
+
+
+  
+  
