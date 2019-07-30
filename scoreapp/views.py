@@ -26,3 +26,6 @@ def create(request):
 
     record.save()
     return render(request,'nowgrade.html')
+
+def nowgrade(request):
+    return render(request, 'nowgrade.html',{'first_grade':'A'}) #'A'는 앞 페이지에서 받아올 학점 
