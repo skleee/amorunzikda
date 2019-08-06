@@ -19,7 +19,7 @@ def create(request):
     record.class_total = request.GET['class_total']
     record.mid_ratio = request.GET['mid_ratio']
     record.final_ratio = request.GET['final_ratio']
-  
+
     #함수 추가 필요
     record.first_grade = "A"
     record.first_percentage = 40

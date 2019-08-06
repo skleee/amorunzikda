@@ -6,7 +6,7 @@ class Score(models.Model):
     expected_grade = models.CharField(max_length=3)
     lecture_professor = models.CharField(max_length=50)
     professor_style = models.CharField(max_length=8)
-    lecture_type = models.IntegerField()
+    lecture_type = models.CharField()
     my_score = models.FloatField()
     class_sd = models.FloatField()
     class_average = models.FloatField()
@@ -23,7 +23,3 @@ class Score(models.Model):
 
     def __str__(self):
         return self.nickname
-# user_id:string
-# user_content:string
-
-# professor_style:string
