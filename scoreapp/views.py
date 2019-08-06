@@ -27,7 +27,7 @@ def create(request):
     class_average = request.GET['class_average']
     class_sd = request.GET['class_sd']
     
-    ratio_ = subjectratio[lecture_type_]
+    ratio = subjectratio[lecture_type_]
 
     #교수 학점비율에 따라 학점 비율 조정
     professor_style = '학점느님' #json에서 찾아오기
@@ -40,7 +40,7 @@ def create(request):
             ratio[i] -= 25
         else:
             continue
-    record.ratio = ratio_
+    record.ratio = ratio
 
     #Zvalue 구해서 상위 비율 구하기
     zscore = (my_score - class_average)/class_sd
@@ -62,6 +62,7 @@ def create(request):
     record.first_grade = first_grade
     record.first_percentage = first_percentage
 
+    #아직 안 한 거
     #final_pectentage
     #final_grade
     #rivals_to_win
