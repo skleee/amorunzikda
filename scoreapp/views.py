@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Score
+import scipy.stats as st
 
 subjectratio = {
     '국제어': [50, 90],
@@ -41,13 +42,25 @@ def create(request):
             continue
     record.ratio = ratio_
 
-    #Zvalue 구하기
+    #Zvalue 구해서 상위 비율 구하기
     zscore = (my_score - class_average)/class_sd
-
-
-    #함수 추가 필요
-    record.first_grade = "A"
-    record.first_percentage = 40
+    pvalue = st.norm.cdf(zscore)
+    if zscore == 0:
+        first_percentage = 50
+    else:
+        first_percentage = (1-pvalue)*100
+    first_percentage = float('%.2f' % round(first_percentage, 2))
+    
+    #현재 학점 구하기
+    if int(first_percentage) < ratio[0]:
+        first_grade = "A"
+    elif int(first_percentage) < ratio[1]:
+        first_grade = "B"
+    else:
+        first_grade = "C"
+    
+    record.first_grade = first_grade
+    record.first_percentage = first_percentage
 
     #final_pectentage
     #final_grade
