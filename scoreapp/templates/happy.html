@@ -1,12 +1,78 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+.slider {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 15px;
+  border-radius: 5px;  
+  background: linear-gradient( to right, #5858FA, #0B0B61 );
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
 
-<h1>행복회로를 얼마나 돌리시겠습니까?</h1>
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #CEF6F5;
+  cursor: pointer;
+}
 
-<form>
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: radial-gradient( #EFF2FB, #00FFFF, #EFFBFB );
+  cursor: pointer;
+}
+
+</style>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Cover Template · Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/cover/">
+
+    <link href="cover.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">행복회로</h3>
+  </header>
+
+  <main role="main" class="inner cover">
+        <h1 class="cover-heading">행복회로를 얼마나 돌리시겠습니까?</h1>
+          <p class="lead">
     <div class="form-group">
-      <label for="formControlRange">Example Range input</label>
-      <input type="range" class="form-control-range" id="formControlRange">
+    <label for="formControlRange"></label>
+<div class="slidecontainer">
+  <input type="range" min="1" max="100" value="50" class="slider" name="happythinking">
+  <br><br><br><br>
+  <a href="url"><img src="https://t1.daumcdn.net/cfile/tistory/995B20335A200C021E" width=></a>
+</div>
     </div>
-  </form>
+    <p class="lead">
+      <a class="btn btn-lg btn-secondary" href="{ %url 'result'% }">최종 결과 보러 가기</a>
+    </p>
+  </main>
 
-<button type="button" class="btn btn-default btn-lg active" href="{ %url 'result'% }">GO </button>
+</div>
+</body>
+</html>
+{% endblock %}
