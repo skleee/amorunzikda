@@ -7,9 +7,6 @@ class Score(models.Model):
     lecture_professor = models.CharField(max_length=50)
     professor_style = models.CharField(max_length=8)
     lecture_type = models.CharField()
-    #my_score = models.FloatField()
-    #class_sd = models.FloatField()
-    #class_average = models.FloatField()
     ratio = models.ListCharField(
         base_field = IntegerField()
     )
