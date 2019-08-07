@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 
-  
 <title>service/아모른직다/최종결과</title>
 <style>
 .bd-placeholder-img {
@@ -37,17 +36,14 @@
 {% endfor %}
 
 <div class="container">
-	<form action="">
-	  comment <input type="text" name="user_content" style="width:300px;">
-	  <br>
-	  password <input type="password" name="user_pw" >
-	  
-	  <input class="btn btn-outline-dark" type="submit" value="제출하기" href="{ %url 'home'% }">
-  </form>
-    <button style="width:380px;" type="button" class="btn btn-outline-success" href="{ %url 'home'% }">Home</button>
+  
+  <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="나의 한 마디" aria-label="Recipient's username" aria-describedby="button-addon2" name="user_content">
+  </div>
+	<input class="btn btn-outline-primary" style="width:200px;" type="submit" value="제출하기" href="{ %url 'home'% }">
+  <button style="width:200px;" type="button" class="btn btn-outline-success" href="{ %url 'home'% }">Home</button>
 
 </div>
 </div>
 </body>
-</html>
 {% endblock %}
