@@ -1,48 +1,32 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<meta-charset = "utf-8">
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v3.8.5">
-    <title>service/아모른직다/최종결과</title>
+{% extends 'base.html' %}
+{% block content %}
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/cover/">
+  
+<title>service/아모른직다/최종결과</title>
+<style>
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    }
 
-    <!-- Bootstrap core CSS -->
-<link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+    font-size: 3.5rem;
       }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
-  </head>
-  <body class="text-center">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
-  <br><br>
-    <div class="inner">
-      <h3 class="masthead-brand">최종 결과</h3>
-    </div>
-  </header>
+    }
+</style>
+<body class="text-center">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<header class="masthead mb-auto">
+<br><br>
+<div class="inner">
+    <h3 class="masthead-brand">최종 결과</h3>
+</div>
+</header>
 <br><br>
 {% for a in results.all %}
   <main role="main" class="inner cover">
@@ -63,12 +47,7 @@
     <button style="width:380px;" type="button" class="btn btn-outline-success" href="{ %url 'home'% }">Home</button>
 
 </div>
-
-<footer class="mastfoot mt-auto">
-    <div class="inner">
-        <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-    </div>
- </footer>
 </div>
 </body>
 </html>
+{% endblock %}
