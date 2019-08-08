@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Score
 import scipy.stats as st
+import json
 
 subjectratio = {
     '국제어': [50, 90],
@@ -29,8 +30,18 @@ def create(request):
     
     ratio = subjectratio[lecture_type_]
 
+    #검색해서 가져온 값 -> 추가해야 함
+    lecture = '계량경제이론1'
+    professor = '한희준'
+    
+    #교수 학점 비율 가져오기
+    with open('./static/json/everytime.json', encoding = 'utf-8') as json_file:
+        datastore = json.loads(json_file.read())
+        for pp in datastore:
+            if pp['prof'] == professor and pp['title'] == lecture:
+                professor_style = pp['details']['학점 비율']
+
     #교수 학점비율에 따라 학점 비율 조정
-    professor_style = '학점느님' #json에서 찾아오기
     for i in range(2):
         if professortype == '비율채워줌':
             ratio[i] -= 5
@@ -40,7 +51,8 @@ def create(request):
             ratio[i] -= 25
         else:
             continue
-    record.ratio = ratio
+    record.a_ratio = ratio[0]
+    record.b_ratio = ratio[1]
 
     #Zvalue 구해서 상위 비율 구하기
     zscore = (my_score - class_average)/class_sd
@@ -75,9 +87,9 @@ def nowgrade(request):
     return render(request, 'nowgrade.html',{'first_grade':'A'}) #'A'는 앞 페이지에서 받아올 학점 
 
 #행복회로로 A, B 비율 조정
-def happythinking(request, record.ratio):
+def happythinking(request, record.a_ratio, ratio.b_ratio):
     happy_thinking = request.GET['happythinking']
-    ratio = record.ratio
+    ratio = [record.a_ratio, ratio.b_ratio]
     for i in range(2):
         if happy_thinking<20:
             ratio[i] -= 10

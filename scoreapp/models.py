@@ -6,10 +6,9 @@ class Score(models.Model):
     expected_grade = models.CharField(max_length=3)
     lecture_professor = models.CharField(max_length=50)
     professor_style = models.CharField(max_length=8)
-    lecture_type = models.CharField()
-    ratio = models.ListCharField(
-        base_field = IntegerField()
-    )
+    lecture_type = models.CharField(max_length=5)
+    a_ratio = models.IntegerField()
+    b_ratio = models.IntegerField()
     class_total = models.IntegerField()
     mid_ratio = models.FloatField(default=50)
     final_ratio = models.FloatField(default=50)
