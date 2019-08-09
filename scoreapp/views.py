@@ -89,7 +89,19 @@ def create(request):
     return redirect('/')
 
 def nowgrade(request):
-    return render(request, 'nowgrade.html',{'first_grade':'A'}) #'A'는 앞 페이지에서 받아올 학점 
+    comment_A = ['이런 기만자!!!','아니 이 누추한 곳에 귀하신 분이...']
+    comment_B = ['有B無患: B만 있으면 걱정이 없다 했거늘...','나B야~ 나B야~','C 아닌게 어디야!']
+    comment_C = ['이번 학기 가C밭 길만 걷자', 'C그널 보내 C그널 보내']
+    comment_DF = ['ㅋㅋㅋㅋㅋㅋㅋ','삐빅- 재수강입니다.']
+    if first_grade == "A":
+        random.choice(comment_A)
+    elif first_grade == "B":
+        random.choice(comment_B)
+    elif first_grade == "C":
+        random.choice(comment_C)
+    else:
+        random.choice(comment_DF)
+    return render(request, 'nowgrade.html',{'first_grade':first_grade})
 
 def happy(request):
     return render(request, 'happy.html')
