@@ -26,9 +26,12 @@ img::-moz-selection {
     background: transparent;
 }
 
+#calculation{
+    padding-top: 10px;
+}
 
 #mainNav {
-    background-color: #212529;
+    background-color:transparent;
 }
 
 #mainNav .navbar-brand {
@@ -64,6 +67,7 @@ img::-moz-selection {
     font-size: 1.75em;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
+
 }
 #mainNav .navbar-nav .nav-item .nav-link {
     padding: 1.1em 1em !important;
@@ -132,5 +136,16 @@ header.masthead .intro-text .intro-heading {
 }
 }
 
+.fade-in {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s linear;
+  }
+  
+  .fade-out {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s linear;
+  }
   
   

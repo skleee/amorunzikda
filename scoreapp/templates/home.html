@@ -3,13 +3,6 @@
 <script type="text/javascript" src="../static/js/typeahead.bundle.js"></script>
     
 <style>
-
-.typeahead {
-	background-color: #FFFFFF;
-}
-.tt-query {
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-}
 .tt-hint {
 	color: #999999;
 }
@@ -42,7 +35,7 @@
             <div class="intro-lead-in">중간고사 성적으로 학기말 성적을 예측해보세요</div>
             <div class="intro-heading text-uppercase">아직모른다? 아모른직다!</div>
     
-        <!--방명록-->
+        <!--방명록(model에 맞추어 수정 필요)-->
         <div class="container mt-3">
             <div id="myCarousel" class="carousel slide">
                 <!-- The slideshow -->
@@ -54,7 +47,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ one.nickname }}</h5>
                                     <p class="card-text">{{ one.expected_grade }}</p>
-                                    <p class="card-text">{{ one.comment }}</p>                                    
+                                    <p class="card-text">{{ one.user_content }}</p>                                    
                                     <small class="text-muted">Last updated 3 mins ago</small>
                                 </div>
                             </div>    
@@ -97,7 +90,7 @@
     <div class="form-row">
         <div class="col-md-6 mb-3">
             <label for="validationCustom01">닉네임</label>
-            <input type="text" name="nickname" class="form-control" id="validationCustom01" placeholder="닉네임" required>
+            <input type="text" name="nickname" class="form-control" id="validationCustom01" placeholder="사용자 이름을 입력하세요" required>
             <div class="invalid-feedback">사용자 이름을 입력해주세요</div>
         </div>
         <div class="col-md-6 mb-3">
@@ -107,18 +100,15 @@
                 <option value="A">A</option>
                 <option value="B">B</option>
                 <option value="C">C</option>
-                <option value="D">D/F</option>
             </select>
             <div class="invalid-feedback">목표 학점을 입력해주세요</div>
         </div>
     </div>
- 
-  
-    <!-- 검색 기능 임시 추가 -->
+    <!--강의명 교수명 검색-->
     <div class="form-row">
         <div class="col-md-6 mb-3">
-            <label for="validationCustom03">강의명 및 교수명</label><br>
-            <input name="lecture" type="text" class="form-control typeahead tt-query" id="validationCustom03" autocomplete="off" spellcheck="false" placeholder="강의명/교수명을 입력하세요" required>
+            <label for="validationCustom03">강의명 및 교수명<span class="help-block text-muted"> (2019년도 2학기 개설 강의 기준)</span></label><br>
+            <input name="lecture" type="text" class="form-control typeahead"  id="validationCustom03" autocomplete="off" spellcheck="false" placeholder="강의명으로 검색해주세요" required>
             <div class="invalid-feedback">강의명/교수명을 입력해주세요</div>
         </div>
  
@@ -222,8 +212,28 @@ $('.typeahead').typeahead({
     display: function(item){return item.title + ' - ' + item.prof},
     limit: 30,
     source: lecturedata
-}
-)
+});
+
+//navbar fadein fadeout by scroll
+$(function () {
+  var lastScrollTop = 0;
+  var $navbar = $('.navbar');
+
+  $(window).scroll(function(event){
+    var st = $(this).scrollTop();
+
+    if (st > lastScrollTop) { // scroll down
+        $navbar.fadeOut()
+        $navbar.addClass("fade-out");
+        $navbar.removeClass("fade-in");      
+    } else { // scroll up
+        $navbar.fadeIn()
+        $navbar.addClass("fade-in");
+        $navbar.removeClass("fade-out");
+      }
+    lastScrollTop = st;
+  });
+});
 </script>
 
 {% endblock %}

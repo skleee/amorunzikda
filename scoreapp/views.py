@@ -36,16 +36,17 @@ def create(request):
     #교수 학점 비율 가져오기
     lecture = lectureandprofessor[0]
     professor = lectureandprofessor[1]
-    # '/static/json/everytime.json'
     module_dir = os.path.dirname(__file__)
     file_path = os.path.join(module_dir, './static/json/everytime.json')
     with open(file_path,'r', encoding='utf-8') as json_file:
         datastore = json.load(json_file)
         for pp in datastore:
             if pp['prof'] == professor and pp['title'] == lecture:
-                record.professor_style = pp['details']['학점 비율']
-    # professor_style="학점 느님"
-
+                if pp['details']:
+                    record.professor_style = pp['details']['학점 비율']
+                else:
+                    record.professor_style = "정보없음"
+ 
     #교수 학점비율에 따라 학점 비율 조정
     for i in range(2):
         if record.professor_style == '비율채워줌':
