@@ -73,6 +73,13 @@ def create(request):
     
     record.first_grade = first_grade
     record.first_percentage = first_percentage
+    
+    #기만자 거르기
+    if(first_grade=="A"):
+        return (request, 'nowgrade.html')
+    if(first_grade=="B")&(expected_grade=="B"): #얘는 A에 도전할 수 있도록 해줍시다.
+        expected_grade = "A"
+        return (request, 'nowgrade.html')
 
     #final_pectentage
     #final_grade
@@ -84,8 +91,12 @@ def create(request):
 def nowgrade(request):
     return render(request, 'nowgrade.html',{'first_grade':'A'}) #'A'는 앞 페이지에서 받아올 학점 
 
+def happythinking(request):
+    return render(request, 'happythinking.html')
+
 #행복회로로 A, B 비율 조정
 def happy(request):
+    def happytcircuit(request, record.a_ratio, ratio.b_ratio):
     happy_thinking = request.GET['happythinking']
     ratio = [record.a_ratio, ratio.b_ratio]
     for i in range(2):
@@ -99,8 +110,9 @@ def happy(request):
             ratio[i] += 1
         elif happy_thinking<80:
             ratio[i] += 5
-        else:
+        else :
             ratio[i] += 10
+    return render(request, 'result.html', {'a_ratio':'ratio[0]', 'b_ratio':'ratio[1]'})
 
-def result(request):
-    render('result.html')
+def result(request, record.all):
+    return render(request, 'result.html')
