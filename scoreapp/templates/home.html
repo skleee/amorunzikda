@@ -207,31 +207,22 @@ $(document).ready(function(){
 });
 
 //강의 검색
-$(document).ready(function(){
-    var lectures = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.whitespace,
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        // The url points to a json file that contains an array of country names
-        prefetch: {
-            url: './static/json/test.json', //테스트 파일 - json 파일 딕셔너리 불러오는 것으로 수정 필요
-            /*getValue: "title",
-            list: {
-                match: {
-                    enabled:true
-                }
-            }
-            */
-        }
-    });
-    
-    // Initializing the typeahead with remote dataset
-    $('.typeahead').typeahead(null, {
-        name: 'lectures',
-        source: lectures,
-        limit: 10 /* Specify maximum number of suggestions to be displayed */
-    });
-}); 
-
+//강의 검색
+var lecturedata = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title', 'prof'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: '../static/json/everytime.json'
+});
+$('.typeahead').typeahead({
+    highlight: true
+},
+{
+    name: 'lecture-data',
+    display: 'title',
+    limit: 30,
+    source: lecturedata
+}
+)
 </script>
 
 {% endblock %}
