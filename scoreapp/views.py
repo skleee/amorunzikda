@@ -19,7 +19,7 @@ def create(request):
     record = Score()
     record.nickname = request.GET['nickname']
     record.expected_grade = request.GET['expected_grade']
-    record.lecture_professor="dtttt" #일단
+    record.lecture_professor= request.GET['lecture']
     lecture_type_ = request.GET['lecture_type']
     record.lecture_type = lecture_type_
     record.class_total = request.GET['class_total']
@@ -30,18 +30,18 @@ def create(request):
     class_sd = request.GET['class_sd']
     
     ratio = subjectratio[lecture_type_]
-
-    #검색해서 가져온 값 -> 추가해야 함
-    lecture = '계량경제이론1'
-    professor = '한희준'
+    lectureandprofessor = (record.lecture_professor).split(' - ')
     
     #교수 학점 비율 가져오기
-    # with open('../static/json/everytime.json', encoding = 'utf-8') as json_file:
-    #     datastore = json.loads(json_file.read())
-    #     for pp in datastore:
-    #         if pp['prof'] == professor and pp['title'] == lecture:
-    #             professor_style = pp['details']['학점 비율']
-    professor_style="학점 느님"
+    lecture = lectureandprofessor[0]
+    professor = lectureandprofessor[1]
+    # '/static/json/everytime.json'
+    with open('/static/json/everytime.json') as json_file:
+        datastore = json.loads(json_file.read())
+        for pp in datastore:
+            if pp['prof'] == professor and pp['title'] == lecture:
+                record.professor_style = pp['details']['학점 비율']
+    # professor_style="학점 느님"
 
     #교수 학점비율에 따라 학점 비율 조정
     for i in range(2):
@@ -128,12 +128,14 @@ def conclusion(request, record):
     first_percentage = record.first_percentage
     expected_grade = record.expected_grade
     class_total = record.class_total
+    mid_ratio = record.mid_ratio
+    final_ratio = record.final_ratio
     
     if expected_grade == "A":
-        record2.final_percentage = 2*a2_ratio
+        record2.final_percentage = 2*a2_ratio + (mid_ratio*(2*a2_ratio-first_percentage))/final_ratio
     
     if expected_grade == "B":
-        record2.final_percentage = 2*b2_ratio
+        record2.final_percentage = 2*b2_ratio + (mid_ratio*(2*b2_ratio-first_percentage))/final_ratio
     
     record2.rivals_to_win = (first_percentage - record2.final_percentage)*class_total/100
     record2.save()
