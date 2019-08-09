@@ -95,12 +95,7 @@ def happy(request):
     return render(request, 'happy.html')
 
 #행복회로로 A, B 비율 조정
-<<<<<<< HEAD
 def happytcircuit(request):
-=======
-def happy(request):
-    def happytcircuit(request, record.a_ratio, ratio.b_ratio):
->>>>>>> 34ba01d130abdf5ab7b0dfcd2cd750b0538f6ad4
     happy_thinking = request.GET['happythinking']
     ratio = [record.a_ratio, ratio.b_ratio]
     for i in range(2):
