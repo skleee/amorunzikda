@@ -79,8 +79,8 @@ def create(request):
     record.first_grade = first_grade
     record.first_percentage = first_percentage
     
-    if(first_grade=="B") and (record.expected_grade=="B"): #얘는 A에 도전할 수 있도록 해줍시다.
-        expected_grade = "A"
+    if(record.first_grade=="B") and (record.expected_grade=="B"): #얘는 A에 도전할 수 있도록 해줍시다.
+        record.expected_grade = "A"
     record.save()
     return render(request, 'nowgrade.html', {'nowgrade':first_grade})
 
@@ -104,9 +104,9 @@ def happy(request):
     return render(request, 'happy.html')
 
 #행복회로로 A, B 비율 조정
-def happycircuit(request):
+def happycircuit(request, record):
     happy_thinking = request.GET['happythinking']
-    ratio = [record.a_ratio, ratio.b_ratio]
+    ratio = [record.a_ratio, record.b_ratio]
     for i in range(2):
         if happy_thinking<20:
             ratio[i] -= 10
@@ -120,15 +120,29 @@ def happycircuit(request):
             ratio[i] += 5
         else :
             ratio[i] += 10
-    return render(request, 'result.html', {'a_ratio':'ratio[0]', 'b_ratio':'ratio[1]'})
+    return render(request, 'result.html', {'a_ratio':ratio[0], 'b_ratio':ratio[1]})
 
-def conclusion(request):
-    #final_pectentage
-    #final_grade
-    #rivals_to_win
-    #user_content
-    record.save()
-    return render(request, 'result.html')
+def conclusion(request, record):
+    record2=Submit()
+    lecture_professor = record.lecture_professor
+    nickname = record.nickname
+    a2_ratio = record.a_ratio
+    b2_ratio = record.b_ratio
+    first_percentage = record.first_percentage
+    expected_grade = record.expected_grade
+    class_total = record.class_total
+    mid_ratio = record.mid_ratio
+    final_ratio = record.final_ratio
+    
+    if expected_grade == "A":
+        record2.final_percentage = 2*a2_ratio + (mid_ratio*(2*a2_ratio-first_percentage))/final_ratio
+    
+    if expected_grade == "B":
+        record2.final_percentage = 2*b2_ratio + (mid_ratio*(2*b2_ratio-first_percentage))/final_ratio
+    
+    record2.rivals_to_win = (first_percentage - record2.final_percentage)*class_total/100
+    record2.save()
+    return render(request, 'result.html', {'nickname':nickname, 'lecture_professor':lecture_professor, 'expected_grade':expected_grade, 'final_percentage':record2.final_percentage, 'livals_to_win':record2.livals_to_win})
 
 def result(request):
     return render(request, 'result.html')
