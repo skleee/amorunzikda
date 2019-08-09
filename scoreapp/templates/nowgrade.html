@@ -9,10 +9,10 @@
                 <div style="text-align:center" ;>
                     해당 수업의 교수님은 {{ profstyle }}이군요!!!<br>
                     당신의 현재 학점은 "<span style="border: 1px solid black">{{ nowgrade }}</span>"로 예상됩니다.<br><br>
+                    <p>{{comment}}</p>
                     <a href="{% url 'happy' %}">
                         <button type="button" class="btn btn-outline-dark" >
                             행복회로 돌리러 가기</button></a>
-                    <p>{{comment}}</p>
                     <a href="{% url 'home' %}">
                         <button type="button" class="btn btn-outline-dark" >
                             홈으로

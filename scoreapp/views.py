@@ -81,11 +81,7 @@ def create(request):
     
     if(record.first_grade=="B") and (record.expected_grade=="B"): #얘는 A에 도전할 수 있도록 해줍시다.
         record.expected_grade = "A"
-    record.save()
-    return render(request, 'nowgrade.html', {'nowgrade':first_grade})
-
-def nowgrade(request, record):
-    first_grade = record.first_grade
+    
     comment_A = ['이런 기만자!!!','아니 이 누추한 곳에 귀하신 분이...']
     comment_B = ['有B無患: B만 있으면 걱정이 없다 했거늘...','나B야~ 나B야~','C 아닌게 어디야!']
     comment_C = ['이번 학기 가C밭 길만 걷자', 'C그널 보내 C그널 보내']
@@ -100,8 +96,9 @@ def nowgrade(request, record):
         comment = random.choice(comment_DF)
     
     profstyle = record.professor_style
-    
-    return render(request, 'nowgrade.html',{'first_grade':first_grade, 'comment':comment, 'profstyle': profstyle})
+    record.save()
+    return render(request, 'nowgrade.html', {'nowgrade':first_grade,'comment':comment, 'profstyle': profstyle})
+
 
 def happy(request):
     return render(request, 'happy.html')
