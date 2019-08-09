@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
+<style>
+#yesinfo{
+    display: block;
+}
+#noinfo{
+    display: none;
+}
+</style>
 <section id="page-top">
     <header class="masthead">
         <div class="container">
             <div class="intro-text"><br><br>
                 <h1 style>당신의 현재 학점은?!
                     {% comment %} <br>{{nowgrade}}</h1><br><br> {% endcomment %}
-                <div style="text-align:center" ;>
-                    해당 수업의 교수님은 {{ profstyle }}이군요!!!<br>
+                <div style="text-align:center">
+                    <div id="yesinfo">해당 수업의 교수님은 "<strong>{{ profstyle }}</strong>"이군요!!!</div>
+                    <div id="noinfo">해당 수업은 교수님의 학점 비율에 대한 정보가 없네요ㅠㅠ</div>
+                    <br>
                     당신의 현재 학점은 "<span style="border: 1px solid black">{{ nowgrade }}</span>"로 예상됩니다.<br><br>
                     <p>{{comment}}</p>
                     <a href="{% url 'happy' %}">
@@ -23,10 +33,15 @@
             </div>
     </header>
 </section>
-<style>
-    h1 {
-        text-align: center
-    }
 
+<script>
+$(document).ready(function(){
+    var pstyle = "{{profstyle}}"
+    if (pstyle=="정보없음"){
+        document.getElementById("yesinfo").style.display="none";
+        document.getElementById("noinfo").style.display="block";  
+    }
+});
+</script>
 
 {% endblock %}
