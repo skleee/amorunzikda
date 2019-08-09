@@ -13,7 +13,7 @@ subjectratio = {
 def home(request):
     scores = Score.objects
     return render(request,'home.html',{'scores':scores})
-
+                      
 def create(request):
     record = Score()
     record.nickname = request.GET['nickname']
@@ -75,11 +75,10 @@ def create(request):
     record.first_percentage = first_percentage
     
     #기만자 거르기
-    if(first_grade=="A"):
-        return (request, 'nowgrade.html')
-    if(first_grade=="B")&(expected_grade=="B"): #얘는 A에 도전할 수 있도록 해줍시다.
+    if(first_grade=="B") and (expected_grade=="B"): #얘는 A에 도전할 수 있도록 해줍시다.
         expected_grade = "A"
-        return (request, 'nowgrade.html')
+    record.save()
+    return render(request, 'nowgrade.html', {'nowgrade':first_grade})
 
     #final_pectentage
     #final_grade

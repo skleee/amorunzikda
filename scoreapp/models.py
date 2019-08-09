@@ -15,9 +15,23 @@ class Score(models.Model):
     first_grade = models.CharField(max_length=5)
     first_percentage = models.FloatField()
     final_percentage = models.FloatField()
+    def __str__(self):
+        return self.nickname
+
+class Happy(models.Model):
+    first = models.ForeignKey('Score')
+    a_ratio2 = models.IntegerField()
+    b_ratio2 = models.IntegerField()
+    happythinking = models.FloatField()
+    def __str__(self):
+        return self.nickname
+
+class Submit(models.Model):
+    first = models.ForeignKey('Score')
+    second = models.Foreignkey('Happy')
     final_grade = models.CharField(max_length=5)
     rivals_to_win = models.IntegerField()
-    user_content = models.CharField(max_length=100)
-    happythinking = models.FloatField()
+    user_content = models.CharField(max_length=100, default=" ")
+
     def __str__(self):
         return self.nickname
