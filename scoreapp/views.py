@@ -3,6 +3,7 @@ from .models import Score
 import scipy.stats as st
 import json
 import random
+import os
 
 subjectratio = {
     '국제어': [50, 90],
@@ -36,8 +37,10 @@ def create(request):
     lecture = lectureandprofessor[0]
     professor = lectureandprofessor[1]
     # '/static/json/everytime.json'
-    with open('/static/json/everytime.json') as json_file:
-        datastore = json.loads(json_file.read())
+    module_dir = os.path.dirname(__file__)
+    file_path = os.path.join(module_dir, './static/json/everytime.json')
+    with open(file_path,'r', encoding='utf-8') as json_file:
+        datastore = json.load(json_file)
         for pp in datastore:
             if pp['prof'] == professor and pp['title'] == lecture:
                 record.professor_style = pp['details']['학점 비율']
@@ -45,11 +48,11 @@ def create(request):
 
     #교수 학점비율에 따라 학점 비율 조정
     for i in range(2):
-        if professor_style == '비율채워줌':
+        if record.professor_style == '비율채워줌':
             ratio[i] -= 5
-        elif professor_style == '매우깐깐함':
+        elif record.professor_style == '매우깐깐함':
             ratio[i] -= 15
-        elif professor_style == 'F폭격기':
+        elif record.professor_style == 'F폭격기':
             ratio[i] -= 25
         else:
             continue
