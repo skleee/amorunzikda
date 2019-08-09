@@ -27,7 +27,8 @@
 </div>
 </header>
 <br><br>
-{% for a in record.all %}
+{#여기서 all이라고 쓰면 안 될 것 같은데... 뭐라고 써야 할 지 모르겠어요 ㅜㅜㅜ pk를 써야 할까요?#}
+{% for a in record.all %} 
   <main role="main" class="inner cover">
     <p class="lead">{{a.lecture_professor}}의 결과입니다.</p>
     <p class="lead">{{a.nickname}}님은 기말고사에서 {{a.final_percentage}}%안에 들어야 {{a.expected_grade}}학점이 가능합니다.</p>

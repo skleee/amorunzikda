@@ -73,6 +73,13 @@ def create(request):
     
     record.first_grade = first_grade
     record.first_percentage = first_percentage
+    
+    #기만자 거르기
+    if(first_grade=="A"):
+        return (request, 'nowgrade.html')
+    if(first_grade=="B")&(expected_grade=="B"): #얘는 A에 도전할 수 있도록 해줍시다.
+        expected_grade = "A"
+        return (request, 'nowgrade.html')
 
     #아직 안 한 거
     #final_pectentage
