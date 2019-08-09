@@ -86,7 +86,7 @@ def create(request):
     #rivals_to_win
     #user_content
     record.save()
-    return render(request,'nowgrade.html')
+    return redirect('/')
 
 def nowgrade(request):
     return render(request, 'nowgrade.html',{'first_grade':'A'}) #'A'는 앞 페이지에서 받아올 학점 
@@ -95,12 +95,7 @@ def happy(request):
     return render(request, 'happy.html')
 
 #행복회로로 A, B 비율 조정
-<<<<<<< HEAD
 def happytcircuit(request):
-=======
-def happy(request):
-    def happytcircuit(request, record.a_ratio, ratio.b_ratio):
->>>>>>> 34ba01d130abdf5ab7b0dfcd2cd750b0538f6ad4
     happy_thinking = request.GET['happythinking']
     ratio = [record.a_ratio, ratio.b_ratio]
     for i in range(2):
