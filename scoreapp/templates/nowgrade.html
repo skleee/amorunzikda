@@ -4,29 +4,28 @@
     <header class="masthead">
         <div class="container">
             <div class="intro-text"><br><br>
-                <h1 style>당신의 현재 학점은?!
-                    {% comment %} <br>{{nowgrade}}</h1><br><br> {% endcomment %}
-                <div style="text-align:center" ;>
-                    해당 수업의 교수님은 {{ profstyle }}이군요!!!<br>
-                    당신의 현재 학점은 "<span style="border: 1px solid black">{{ nowgrade }}</span>"로 예상됩니다.<br><br>
-                    <p>{{comment}}</p>
-                    <a href="{% url 'happy' %}">
-                        <button type="button" class="btn btn-outline-dark" >
-                            행복회로 돌리러 가기</button></a>
-                    <a href="{% url 'home' %}">
-                        <button type="button" class="btn btn-outline-dark" >
-                            홈으로
-                            <br>
-                        </button>
-                    </a>
-                </div>
-            </div>
+    <header class="masthead mb-auto">
+      <br><br>
+      <div class="inner">
+        <h3 class="masthead-brand">당신의 현재 학점은?!</h3>
+      </div>
+    </header>
+     <div style="text-align:center" ;>
+        해당 수업의 교수님은 {{ profstyle }}이군요!!!<br>
+        <h2>당신의 현재 학점은 "<span style="border: 1px solid black">{{ nowgrade }}</span>"로 예상됩니다.<br>
+        <p>{{comment}}</p></h2>
+        <a href="{% url 'happy' %}">
+        <button type="button" class="btn btn-outline-dark" >
+            행복회로 돌리러 가기</button></a>
+        <a href="{% url 'home' %}">
+        <button type="button" class="btn btn-outline-dark" >
+            홈으로
+        </button>
+        </a>
+        <br>
+     </div>
+    </div>
     </header>
 </section>
-<style>
-    h1 {
-        text-align: center
-    }
-
 
 {% endblock %}

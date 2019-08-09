@@ -29,7 +29,7 @@ class Happy(models.Model):
 class Submit(models.Model):
     first = models.ForeignKey('Score', on_delete=models.CASCADE)
     second = models.ForeignKey('Happy', on_delete=models.CASCADE)
-    final_grade = models.CharField(max_length=5)
+    final_percentage = models.IntegerField(default=5)
     rivals_to_win = models.IntegerField()
     user_content = models.CharField(max_length=100, default=" ")
     def __str__(self):

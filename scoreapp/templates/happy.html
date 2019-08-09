@@ -48,21 +48,21 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 
   <main role="main" class="inner cover">
         <h1 class="cover-heading">행복회로를 얼마나 돌리시겠습니까?</h1>
-    <form action="{%url 'create'%}">
     <div class="form-group">
     <label for="formControlRange"></label>
 <div class="slidecontainer">
-  <input type="range" min="1" max="100" value="50" class="slider" name="happythinking">
+<form action="{% url 'happycircuit' %}">
+  <input type="range" min="1" max="100" value="50" class="slider" name="happy_thinking">
+
   <br><br><br><br>
   <a href="url"><img src="https://t1.daumcdn.net/cfile/tistory/995B20335A200C021E" width=></a>
 </div>
     </div>
-    </form>
     <p class="lead">
-      <a class="btn btn-lg btn-secondary" href="{% url 'happycircuit' %}">최종 결과 보러 가기</a>
+      <a class="btn btn-lg btn-secondary" href="{% url 'result' %}">최종 결과 보러 가기</a>
     </p>
   </main>
-
+</form>
 </div>
 </body>
 </html>

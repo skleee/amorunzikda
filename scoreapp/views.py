@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Score
+from .models import Score, Submit
 import scipy.stats as st
 import json
 import random
@@ -104,48 +104,48 @@ def happy(request):
     return render(request, 'happy.html')
 
 #행복회로로 A, B 비율 조정
-def happycircuit(request, record):
-    happy_thinking = request.GET['happythinking']
-    ratio = [record.a_ratio, record.b_ratio]
-    for i in range(2):
-        if happy_thinking<20:
-            ratio[i] -= 10
-        elif happy_thinking<40:
-            ratio[i] -= 5
-        elif happy_thinking<50:
-            ratio[i] -= 1
-        elif happy_thinking<60:
-            ratio[i] += 1
-        elif happy_thinking<80:
-            ratio[i] += 5
-        else :
-            ratio[i] += 10
-    record.a_ratio = ratio[0]
-    record.b_ratio = ratio[1] 
-    return redirect('conclusion')
+def happycircuit(request):
+    record2 = Submit()
+    lecture_professor = Score.objects.latest('lecture_professor')
+    # happy_thinking = int(request.POST.get('happy_thinking'))
+    nickname = Score.objects.latest('nickname')
+    first_percentage = Score.objects.latest('first_percentage')
+    expected_grade = Score.objects.latest('expected_grade')
+    class_total = Score.objects.latest('class_total')
+    mid_ratio = Score.objects.latest('mid_ratio')
+    a_ratio = Score.objects.latest('a_ratio')
+    b_ratio = Score.objects.latest('b_ratio')
+    # ratio = [a_ratio, b_ratio]
+    # for i in range(2):
+    #     if happy_thinking<20:
+    #         ratio[i] -= 10
+    #     elif happy_thinking<40:
+    #         ratio[i] -= 5
+    #     elif happy_thinking<50:
+    #         ratio[i] -= 1
+    #     elif happy_thinking<60:
+    #         ratio[i] += 1
+    #     elif happy_thinking<80:
+    #         ratio[i] += 5
+    #     else :
+    #         ratio[i] += 10
+    # a_ratio = ratio[0]
+    # b_ratio = ratio[1] 
 
-def conclusion(request, record):
-    record2=Submit()
-    lecture_professor = record.lecture_professor
-    nickname = record.nickname
-    a2_ratio = record.a_ratio
-    b2_ratio = record.b_ratio
-    first_percentage = record.first_percentage
-    expected_grade = record.expected_grade
-    class_total = record.class_total
-    mid_ratio = record.mid_ratio
-    final_ratio = record.final_ratio
-    
     if expected_grade == "A":
-        record2.final_percentage = 2*a2_ratio + (mid_ratio*(2*a2_ratio-first_percentage))/final_ratio
+        record2.final_percentage = 2*a_ratio + (mid_ratio*(2*a_ratio-first_percentage))/final_ratio
     
     if expected_grade == "B":
-        record2.final_percentage = 2*b2_ratio + (mid_ratio*(2*b2_ratio-first_percentage))/final_ratio
+        record2.final_percentage = 2*b_ratio + (mid_ratio*(2*b_ratio-first_percentage))/final_ratio
     
     record2.rivals_to_win = (first_percentage - record2.final_percentage)*class_total/100
-    record2.save()
-    return render(request, 'result.html', {'nickname':nickname, 'lecture_professor':lecture_professor, 'expected_grade':expected_grade, 'final_percentage':record2.final_percentage, 'livals_to_win':record2.livals_to_win})
+    return render(request, 'result.html', {
+        'lecture_professor' : lecture_professor, 
+        'nickname' : nickname, 
+        'expected_grade' : expected_grade, 
+        'final_percentage' : record2.final_percentage, 
+        'rivals_to_win' : record2.rivals_to_win
+    })
 
 def result(request):
     return render(request, 'result.html')
-
