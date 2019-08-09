@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Score
 import scipy.stats as st
 import json
+import random
 
 subjectratio = {
     '국제어': [50, 90],

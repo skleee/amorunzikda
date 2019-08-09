@@ -1,19 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <section id="page-top">
     <header class="masthead">
         <div class="container">
-            <div class="intro-text">
-                <div>당신의 현재 학점은?!</div>
-                {{nowgrade}}<br><br>
+            <div class="intro-text"><br><br>
+                <h1 style>당신의 현재 학점은?!
+                    <br>{{nowgrade}}</h1><br><br>
                 <div style="text-align:center" ;>
                     당신의 현재 학점은 "<span style="border: 1px solid black">{{first_grade}}</span>"로 예상됩니다.<br><br>
                     <a href="happy.html">
                         <button type="button" class="btn btn-outline-dark" href="{ %url 'happy'% }">
-                            행복회로 돌리러 가기
-                        </button>
-                    </a>
+                            행복회로 돌리러 가기</button></a>
                     <a href="home.html">
                         <button type="button" class="btn btn-outline-dark" href="{ %url 'home'% }">
                             홈으로
@@ -21,15 +18,14 @@
                         </button>
                     </a>
                 </div>
-
-
-
-
             </div>
     </header>
 </section>
+<style>
+    h1 {
+        text-align: center
+    }
 
-
-
-
-{% endblock %}
+        {
+        % endblock %
+    }
