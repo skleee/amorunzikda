@@ -35,7 +35,7 @@
             <div class="intro-lead-in">중간고사 성적으로 학기말 성적을 예측해보세요</div>
             <div class="intro-heading text-uppercase">아직모른다? 아모른직다!</div>
     
-        <!--방명록-->
+        <!--방명록(model에 맞추어 수정 필요)-->
         <div class="container mt-3">
             <div id="myCarousel" class="carousel slide">
                 <!-- The slideshow -->
@@ -47,7 +47,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ one.nickname }}</h5>
                                     <p class="card-text">{{ one.expected_grade }}</p>
-                                    <p class="card-text">{{ one.comment }}</p>                                    
+                                    <p class="card-text">{{ one.user_content }}</p>                                    
                                     <small class="text-muted">Last updated 3 mins ago</small>
                                 </div>
                             </div>    
@@ -58,7 +58,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ one.nickname }}</h5>
                                     <p class="card-text">{{ one.expected_grade }}</p>
-                                    <p class="card-text">{{ one.comment }}</p>
+                                    <p class="card-text">{{ one.user_content }}</p>
                                     <small class="text-muted">Last updated 3 mins ago</small>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
     <div class="form-row">
         <div class="col-md-6 mb-3">
             <label for="validationCustom01">닉네임</label>
-            <input type="text" name="nickname" class="form-control" id="validationCustom01" placeholder="닉네임" required>
+            <input type="text" name="nickname" class="form-control" id="validationCustom01" placeholder="사용자 이름을 입력하세요" required>
             <div class="invalid-feedback">사용자 이름을 입력해주세요</div>
         </div>
         <div class="col-md-6 mb-3">
@@ -107,9 +107,8 @@
     <!--강의명 교수명 검색-->
     <div class="form-row">
         <div class="col-md-6 mb-3">
-            <label for="validationCustom03">강의명 및 교수명</label><br>
+            <label for="validationCustom03">강의명 및 교수명<span class="help-block text-muted"> (2019년도 2학기 개설 강의 기준)</span></label><br>
             <input name="lecture" type="text" class="form-control typeahead"  id="validationCustom03" autocomplete="off" spellcheck="false" placeholder="강의명으로 검색해주세요" required>
-            <p class="help-block text-muted">(2019년도 2학기 개설 강의 기준)</p>
             <div class="invalid-feedback">강의명/교수명을 입력해주세요</div>
         </div>
  
