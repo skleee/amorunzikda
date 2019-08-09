@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Score
 import scipy.stats as st
 import json
+import random
 
 subjectratio = {
     '국제어': [50, 90],
@@ -86,7 +87,7 @@ def create(request):
     #rivals_to_win
     #user_content
     record.save()
-    return render(request,'nowgrade.html')
+    return redirect('/')
 
 def nowgrade(request):
     comment_A = ['이런 기만자!!!','아니 이 누추한 곳에 귀하신 분이...']
