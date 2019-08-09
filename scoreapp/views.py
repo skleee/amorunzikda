@@ -19,7 +19,7 @@ def create(request):
     record = Score()
     record.nickname = request.GET['nickname']
     record.expected_grade = request.GET['expected_grade']
-    record.lecture_professor="dtttt" #일단
+    record.lecture_professor= request.GET['lecture']
     lecture_type_ = request.GET['lecture_type']
     record.lecture_type = lecture_type_
     record.class_total = request.GET['class_total']
@@ -30,18 +30,18 @@ def create(request):
     class_sd = request.GET['class_sd']
     
     ratio = subjectratio[lecture_type_]
-
-    #검색해서 가져온 값 -> 추가해야 함
-    lecture = '계량경제이론1'
-    professor = '한희준'
+    lectureandprofessor = (record.lecture_professor).split(' - ')
     
     #교수 학점 비율 가져오기
-    # with open('../static/json/everytime.json', encoding = 'utf-8') as json_file:
-    #     datastore = json.loads(json_file.read())
-    #     for pp in datastore:
-    #         if pp['prof'] == professor and pp['title'] == lecture:
-    #             professor_style = pp['details']['학점 비율']
-    professor_style="학점 느님"
+    lecture = lectureandprofessor[0]
+    professor = lectureandprofessor[1]
+    # '/static/json/everytime.json'
+    with open('/static/json/everytime.json') as json_file:
+        datastore = json.loads(json_file.read())
+        for pp in datastore:
+            if pp['prof'] == professor and pp['title'] == lecture:
+                record.professor_style = pp['details']['학점 비율']
+    # professor_style="학점 느님"
 
     #교수 학점비율에 따라 학점 비율 조정
     for i in range(2):
@@ -76,7 +76,7 @@ def create(request):
     record.first_grade = first_grade
     record.first_percentage = first_percentage
     
-    if(first_grade=="B") and (expected_grade=="B"): #얘는 A에 도전할 수 있도록 해줍시다.
+    if(first_grade=="B") and (record.expected_grade=="B"): #얘는 A에 도전할 수 있도록 해줍시다.
         expected_grade = "A"
     record.save()
     return render(request, 'nowgrade.html', {'nowgrade':first_grade})

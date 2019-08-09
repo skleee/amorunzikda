@@ -54,6 +54,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ one.nickname }}</h5>
                                     <p class="card-text">{{ one.expected_grade }}</p>
+                                    <p class="card-text">{{ one.comment }}</p>                                    
                                     <small class="text-muted">Last updated 3 mins ago</small>
                                 </div>
                             </div>    
@@ -64,6 +65,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ one.nickname }}</h5>
                                     <p class="card-text">{{ one.expected_grade }}</p>
+                                    <p class="card-text">{{ one.comment }}</p>
                                     <small class="text-muted">Last updated 3 mins ago</small>
                                 </div>
                             </div>
@@ -207,7 +209,6 @@ $(document).ready(function(){
 });
 
 //강의 검색
-//강의 검색
 var lecturedata = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title', 'prof'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -218,7 +219,7 @@ $('.typeahead').typeahead({
 },
 {
     name: 'lecture-data',
-    display: 'title',
+    display: function(item){return item.title + ' - ' + item.prof},
     limit: 30,
     source: lecturedata
 }
