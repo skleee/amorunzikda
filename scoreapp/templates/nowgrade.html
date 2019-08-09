@@ -5,14 +5,15 @@
         <div class="container">
             <div class="intro-text"><br><br>
                 <h1 style>당신의 현재 학점은?!
-                    <br>{{nowgrade}}</h1><br><br>
+                    {% comment %} <br>{{nowgrade}}</h1><br><br> {% endcomment %}
                 <div style="text-align:center" ;>
-                    당신의 현재 학점은 "<span style="border: 1px solid black">{{first_grade}}</span>"로 예상됩니다.<br><br>
-                    <a href="happy.html">
-                        <button type="button" class="btn btn-outline-dark" href="{ %url 'happy'% }">
+                    당신의 현재 학점은 "<span style="border: 1px solid black">{{nowgrade}}</span>"로 예상됩니다.<br><br>
+                    <a href="{% url 'happy' %}">
+                        <button type="button" class="btn btn-outline-dark" >
                             행복회로 돌리러 가기</button></a>
-                    <a href="home.html">
-                        <button type="button" class="btn btn-outline-dark" href="{ %url 'home'% }">
+                    <p>{{comment.text}}</p>
+                    <a href="{% url 'home' %}">
+                        <button type="button" class="btn btn-outline-dark" >
                             홈으로
                             <br>
                         </button>
@@ -26,6 +27,5 @@
         text-align: center
     }
 
-        {
-        % endblock %
-    }
+
+{% endblock %}

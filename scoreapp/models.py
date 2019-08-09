@@ -32,6 +32,5 @@ class Submit(models.Model):
     final_grade = models.CharField(max_length=5)
     rivals_to_win = models.IntegerField()
     user_content = models.CharField(max_length=100, default=" ")
-
     def __str__(self):
         return self.nickname

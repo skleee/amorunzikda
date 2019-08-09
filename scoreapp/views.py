@@ -36,19 +36,20 @@ def create(request):
     professor = '한희준'
     
     #교수 학점 비율 가져오기
-    with open('./static/json/everytime.json', encoding = 'utf-8') as json_file:
-        datastore = json.loads(json_file.read())
-        for pp in datastore:
-            if pp['prof'] == professor and pp['title'] == lecture:
-                professor_style = pp['details']['학점 비율']
+    # with open('../static/json/everytime.json', encoding = 'utf-8') as json_file:
+    #     datastore = json.loads(json_file.read())
+    #     for pp in datastore:
+    #         if pp['prof'] == professor and pp['title'] == lecture:
+    #             professor_style = pp['details']['학점 비율']
+    professor_style="학점 느님"
 
     #교수 학점비율에 따라 학점 비율 조정
     for i in range(2):
-        if professortype == '비율채워줌':
+        if professor_style == '비율채워줌':
             ratio[i] -= 5
-        elif professortype == '매우깐깐함':
+        elif professor_style == '매우깐깐함':
             ratio[i] -= 15
-        elif professortype == 'F폭격기':
+        elif professor_style == 'F폭격기':
             ratio[i] -= 25
         else:
             continue
@@ -75,39 +76,32 @@ def create(request):
     record.first_grade = first_grade
     record.first_percentage = first_percentage
     
-    #기만자 거르기
     if(first_grade=="B") and (expected_grade=="B"): #얘는 A에 도전할 수 있도록 해줍시다.
         expected_grade = "A"
     record.save()
     return render(request, 'nowgrade.html', {'nowgrade':first_grade})
 
-    #final_pectentage
-    #final_grade
-    #rivals_to_win
-    #user_content
-    record.save()
-    return redirect('/')
-
-def nowgrade(request):
+def nowgrade(request, record):
+    first_grade = record.first_grade
     comment_A = ['이런 기만자!!!','아니 이 누추한 곳에 귀하신 분이...']
     comment_B = ['有B無患: B만 있으면 걱정이 없다 했거늘...','나B야~ 나B야~','C 아닌게 어디야!']
     comment_C = ['이번 학기 가C밭 길만 걷자', 'C그널 보내 C그널 보내']
     comment_DF = ['ㅋㅋㅋㅋㅋㅋㅋ','삐빅- 재수강입니다.']
     if first_grade == "A":
-        random.choice(comment_A)
+        comment = random.choice(comment_A)
     elif first_grade == "B":
-        random.choice(comment_B)
+        comment = random.choice(comment_B)
     elif first_grade == "C":
-        random.choice(comment_C)
+        comment = random.choice(comment_C)
     else:
-        random.choice(comment_DF)
-    return render(request, 'nowgrade.html',{'first_grade':first_grade})
+        comment = random.choice(comment_DF)
+    return render(request, 'nowgrade.html',{'first_grade':first_grade, 'comment':comment})
 
 def happy(request):
     return render(request, 'happy.html')
 
 #행복회로로 A, B 비율 조정
-def happytcircuit(request):
+def happycircuit(request):
     happy_thinking = request.GET['happythinking']
     ratio = [record.a_ratio, ratio.b_ratio]
     for i in range(2):
@@ -125,5 +119,14 @@ def happytcircuit(request):
             ratio[i] += 10
     return render(request, 'result.html', {'a_ratio':'ratio[0]', 'b_ratio':'ratio[1]'})
 
+def conclusion(request):
+    #final_pectentage
+    #final_grade
+    #rivals_to_win
+    #user_content
+    record.save()
+    return render(request, 'result.html')
+
 def result(request):
     return render(request, 'result.html')
+
