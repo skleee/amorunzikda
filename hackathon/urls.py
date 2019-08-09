@@ -11,4 +11,5 @@ urlpatterns = [
     # path('nowgrade/', scoreapp.views.nowgrade, name="nowgrade"),
     path('create/happy', scoreapp.views.happy, name="happy"),
     path('nowgrade/happy/result', scoreapp.views.result, name="result"),
+    path('about/', scoreapp.views.about, name="about"),
 ]
