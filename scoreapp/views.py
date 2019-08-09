@@ -55,7 +55,7 @@ def create(request):
     record.b_ratio = ratio[1]
 
     #Zvalue 구해서 상위 비율 구하기
-    zscore = (my_score - class_average)/class_sd
+    zscore = (float(my_score) - float(class_average))/float(class_sd)
     pvalue = st.norm.cdf(zscore)
     if zscore == 0:
         first_percentage = 50
@@ -74,11 +74,9 @@ def create(request):
     record.first_grade = first_grade
     record.first_percentage = first_percentage
 
-    #아직 안 한 거
     #final_pectentage
     #final_grade
     #rivals_to_win
-    #user_pw
     #user_content
     record.save()
     return render(request,'nowgrade.html')
@@ -87,19 +85,22 @@ def nowgrade(request):
     return render(request, 'nowgrade.html',{'first_grade':'A'}) #'A'는 앞 페이지에서 받아올 학점 
 
 #행복회로로 A, B 비율 조정
-def happythinking(request, record.a_ratio, ratio.b_ratio):
+def happy(request):
     happy_thinking = request.GET['happythinking']
     ratio = [record.a_ratio, ratio.b_ratio]
     for i in range(2):
         if happy_thinking<20:
             ratio[i] -= 10
-        elif 20<=happy_thinking<40:
+        elif happy_thinking<40:
             ratio[i] -= 5
-        elif 40<=happy_thinking<50:
+        elif happy_thinking<50:
             ratio[i] -= 1
-        elif 50<=happy_thinking<60:
+        elif happy_thinking<60:
             ratio[i] += 1
-        elif 60<=happy_thinking<80:
+        elif happy_thinking<80:
             ratio[i] += 5
-        else :
+        else:
             ratio[i] += 10
+
+def result(request):
+    render('result.html')
