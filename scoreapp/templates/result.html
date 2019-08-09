@@ -27,23 +27,24 @@
 </div>
 </header>
 <br><br>
-{% for a in results.all %}
+{% for a in record.all %}
   <main role="main" class="inner cover">
-    <p class="lead">{{a.user_id}}님은 기말에서 {{a.final_percentage}}%안에 들어야 {{a.expected_grade}}학점이 가능합니다.</p>
-    <p class="lead">{{a.user_id}}님은 기말에서 {{a.rivals_to_win}}명을 제쳐야 {{a.expected_grade}}학점이 가능합니다.</p>
+    <p class="lead">{{a.lecture_professor}}의 결과입니다.</p>
+    <p class="lead">{{a.nickname}}님은 기말고사에서 {{a.final_percentage}}%안에 들어야 {{a.expected_grade}}학점이 가능합니다.</p>
+    <p class="lead">{{a.nickname}}님은 기말고사에서 {{a.rivals_to_win}}명을 제쳐야 {{a.expected_grade}}학점이 가능합니다.</p>
     <a href="url"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4ddabef1-8390-424a-a828-f61e4df3d499/daraj8q-744f0563-d3f2-4a25-98a7-377abba7dc7b.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRkZGFiZWYxLTgzOTAtNDI0YS1hODI4LWY2MWU0ZGYzZDQ5OVwvZGFyYWo4cS03NDRmMDU2My1kM2YyLTRhMjUtOThhNy0zNzdhYmJhN2RjN2IuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.KpbFWvWcQbuGNwF9TtupLcDKwLRFW8DAZLx404K5bAU"></a>
   </main>
 {% endfor %}
 
 <div class="container">
-  
+<form action="{% url 'create'%}">
   <div class="input-group mb-3">
   <input type="text" class="form-control" placeholder="나의 한 마디" aria-label="Recipient's username" aria-describedby="button-addon2" name="user_content">
   </div>
 	<input class="btn btn-outline-primary" style="width:200px;" type="submit" value="제출하기" href="{ %url 'home'% }">
   <button style="width:200px;" type="button" class="btn btn-outline-success" href="{ %url 'home'% }">Home</button>
-
-</div>
-</div>
+  </div>
+  </div>
+</form>
 </body>
 {% endblock %}

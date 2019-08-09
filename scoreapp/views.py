@@ -86,8 +86,11 @@ def create(request):
 def nowgrade(request):
     return render(request, 'nowgrade.html',{'first_grade':'A'}) #'A'는 앞 페이지에서 받아올 학점 
 
+def happythinking(request):
+    return render(request, 'happythinking.html')
+
 #행복회로로 A, B 비율 조정
-def happythinking(request, record.a_ratio, ratio.b_ratio):
+def happytcircuit(request, record.a_ratio, ratio.b_ratio):
     happy_thinking = request.GET['happythinking']
     ratio = [record.a_ratio, ratio.b_ratio]
     for i in range(2):
@@ -103,3 +106,7 @@ def happythinking(request, record.a_ratio, ratio.b_ratio):
             ratio[i] += 5
         else :
             ratio[i] += 10
+    return render(request, 'result.html', {'a_ratio':'ratio[0]', 'b_ratio':'ratio[1]'})
+
+def result(request, record.all):
+    return render(request, 'result.html')
