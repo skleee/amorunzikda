@@ -7,7 +7,8 @@
                 <h1 style>당신의 현재 학점은?!
                     {% comment %} <br>{{nowgrade}}</h1><br><br> {% endcomment %}
                 <div style="text-align:center" ;>
-                    당신의 현재 학점은 "<span style="border: 1px solid black">{{nowgrade}}</span>"로 예상됩니다.<br><br>
+                    해당 수업의 교수님은 {{ profstyle }}이군요!!!<br>
+                    당신의 현재 학점은 "<span style="border: 1px solid black">{{ nowgrade }}</span>"로 예상됩니다.<br><br>
                     <a href="{% url 'happy' %}">
                         <button type="button" class="btn btn-outline-dark" >
                             행복회로 돌리러 가기</button></a>

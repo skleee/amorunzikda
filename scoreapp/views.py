@@ -98,7 +98,10 @@ def nowgrade(request, record):
         comment = random.choice(comment_C)
     else:
         comment = random.choice(comment_DF)
-    return render(request, 'nowgrade.html',{'first_grade':first_grade, 'comment':comment})
+    
+    profstyle = record.professor_style
+    
+    return render(request, 'nowgrade.html',{'first_grade':first_grade, 'comment':comment, 'profstyle': profstyle})
 
 def happy(request):
     return render(request, 'happy.html')
