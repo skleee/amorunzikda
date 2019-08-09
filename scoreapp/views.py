@@ -120,7 +120,9 @@ def happycircuit(request, record):
             ratio[i] += 5
         else :
             ratio[i] += 10
-    return render(request, 'result.html', {'a_ratio':ratio[0], 'b_ratio':ratio[1]})
+    record.a_ratio = ratio[0]
+    record.b_ratio = ratio[1] 
+    return redirect('conclusion')
 
 def conclusion(request, record):
     record2=Submit()
