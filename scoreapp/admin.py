@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Score, Happy, Submit
+from .models import Score, Submit
 
 # Register your models here.
 admin.site.register(Score)
-admin.site.register(Happy)
 admin.site.register(Submit)

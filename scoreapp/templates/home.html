@@ -40,25 +40,25 @@
             <div id="myCarousel" class="carousel slide">
                 <!-- The slideshow -->
                 <div class="carousel-inner">
-                {% for one in scores.all %}
+                {% for one in submits %}
                     {% if forloop.first %}
                         <div class="carousel-item active">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ one.nickname }}</h5>
-                                    <p class="card-text">{{ one.first_grade }}</p>
+                                    <h5 class="card-title">{{ one.score.nickname }}</h5>
+                                    <p class="card-text">{{ one.score.first_grade }}</p>
                                     <p class="card-text">{{ one.user_content }}</p>                                    
                                     <small class="text-muted">Last updated 3 mins ago</small>
                                 </div>
-                            </div>    
+                            </div>
                         </div>
                     {% else %}
                         <div class="carousel-item">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ one.nickname }}</h5>
-                                    <p class="card-text">{{ one.first_grade }}</p>
-                                    <p class="card-text">{{ one.comment }}</p>
+                                    <h5 class="card-title">{{ one.score.nickname }}</h5>
+                                    <p class="card-text">{{ one.score.first_grade }}</p>
+                                    <p class="card-text">{{ one.user_content }}</p>
                                     <small class="text-muted">Last updated 3 mins ago</small>
                                 </div>
                             </div>

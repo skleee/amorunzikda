@@ -22,14 +22,16 @@
         해당 수업의 교수님은 {{ profstyle }}이군요!!!<br>
         <h2>당신의 현재 학점은 "<span style="border: 1px solid black">{{ nowgrade }}</span>"로 예상됩니다.<br>
         <p>{{comment}}</p></h2>
-        <a href="{% url 'happy' %}">
-        <button type="button" class="btn btn-outline-dark" >
-            행복회로 돌리러 가기</button></a>
-        <a href="{% url 'home' %}">
-        <button type="button" class="btn btn-outline-dark" >
+        {% if nowgrade == 'A' %}
+            <div>행복회로를 안 돌리셔도 됩니다 ^^ 홈으로 가버려~</div>
+        {% else %}
+            <button type="button" class="btn btn-outline-dark" onclick="location.href='{% url 'happy'%}'">
+                행복회로 돌리러 가기
+            </button>
+        {% endif %}
+        <button type="button" class="btn btn-outline-dark" onclick="location.href='{% url 'home' %}'">
             홈으로
         </button>
-        </a>
         <br>
      </div>
     </div>
