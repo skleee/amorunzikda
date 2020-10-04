@@ -165,7 +165,7 @@ def result(request):
         'lecture_professor': record.score.lecture_professor,
         'nickname': record.score.nickname,
         'expected_grade': record.score.expected_grade,
-        'final_percentage': record.final_percentage,
+        'final_percentage': round(record.final_percentage, 2),
         'rivals_to_win': record.rivals_to_win
     })
 

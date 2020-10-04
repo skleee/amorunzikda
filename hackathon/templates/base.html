@@ -1,45 +1,67 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
     <!--Bootstrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/cover/">
-    <link href="cover.css" rel="stylesheet">
-    <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.3/examples/cover/"
+    />
+    <link href="cover.css" rel="stylesheet" />
+    <link
+      href="/docs/4.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    
+
     <title>아모른직다</title>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}">Amorunzikda</a>
-            <ul class="navbar-nav text-uppercase ml-auto">
-                <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="{% url 'about' %}">About</a>
-                </li>
-            </ul>
-        </div>
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}"
+          >Amorunzikda</a
+        >
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{% url 'about' %}">
+              About
+            </a>
+          </li>
+        </ul>
+      </div>
     </nav>
 
-    <div class="container">
-        {% block content %}
-        {% endblock %}
+    <div class="container" style="height: 100vh">
+      {% block content %} {% endblock %}
     </div>
-   
-</body>
-<footer class="bg-light py-4">
+  </body>
+  <footer class="bg-light py-4">
     <div class="container">
-        <div class="small text-center text-muted">Copyright &copy; 2019 - Team AMORUNZIKDA</div>
+      <div class="small text-center text-muted">
+        Copyright &copy; 2019 - Team AMORUNZIKDA
+      </div>
     </div>
-</footer>
+  </footer>
 </html>
-

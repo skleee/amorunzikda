@@ -1,69 +1,84 @@
-{% extends 'base.html' %}
-{% block content %}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% extends 'base.html' %} {% block content %}
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous"
+/>
 <style>
-.slider {
-  -webkit-appearance: none;
-  width: 80%;
-  height: 15px;
-  border-radius: 5px;  
-  background: linear-gradient( to right, #5858FA, #0B0B61 );
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-}
+  .slider {
+    -webkit-appearance: none;
+    width: 80%;
+    height: 15px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #5858fa, #0b0b61);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+  }
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%; 
-  background: #CEF6F5;
-  cursor: pointer;
-}
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #cef6f5;
+    cursor: pointer;
+  }
 
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: radial-gradient( #EFF2FB, #00FFFF, #EFFBFB );
-  cursor: pointer;
-}
-
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: radial-gradient(#eff2fb, #00ffff, #effbfb);
+    cursor: pointer;
+  }
 </style>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
   <title>HappyThinkingCircuit</title>
   <body class="text-center">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-
-  <header class="masthead mb-auto">
-    <div class="inner">
-      <h3 class="masthead-brand">행복회로</h3>
-  </header>
-
-  <main role="main" class="inner cover">
-        <h1 class="cover-heading">행복회로를 얼마나 돌리시겠습니까?</h1>
-    <div class="form-group">
-    <label for="formControlRange"></label>
-<div class="slidecontainer">
-<form action="{% url 'happycircuit' %}">
-  <input type="range" min="1" max="100" value="50" class="slider" name="happy_thinking">
-
-  <br><br><br><br>
-  <a href="url"><img src="https://t1.daumcdn.net/cfile/tistory/995B20335A200C021E"></a>
-</div>
-    </div>
-    <p class="lead">
-      <input type="submit" value="결과 보러 가기" href="{% url 'result' %}">
-    </p>
-</form>
-</div>
-</main>
-</body>
+    <main
+      role="main"
+      class="inner h-100"
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <h1 class="cover-heading">행복회로를 얼마나 돌리시겠습니까?</h1>
+      <div class="form-group">
+        <label for="formControlRange"></label>
+        <div>
+          <form action="{% url 'happycircuit' %}">
+            <input
+              type="range"
+              min="1"
+              max="100"
+              value="50"
+              class="slider"
+              name="happy_thinking"
+            /><br /><br />
+            <a href="url"
+              ><img
+                src="https://t1.daumcdn.net/cfile/tistory/995B20335A200C021E"
+                style="height: 30vh; width: auto"
+            /></a>
+            <p class="lead">
+              <input
+                type="submit"
+                value="결과 보러 가기"
+                href="{% url 'result' %}"
+              />
+            </p>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
 {% endblock %}

@@ -14,14 +14,14 @@
             <div class="intro-text"><br><br>
     <header class="masthead mb-auto">
       <br><br>
-      <div class="inner">
-        <h3 class="masthead-brand">당신의 현재 학점은?!</h3>
+      <div class="inner" style="margin-bottom:2rem;">
+        <h3 style="font-size:2rem;">당신의 현재 학점은?!</h3>
       </div>
     </header>
-     <div style="text-align:center" ;>
-        해당 수업의 교수님은 {{ profstyle }}이군요!!!<br>
-        <h2>당신의 현재 학점은 "<span style="border: 1px solid black">{{ nowgrade }}</span>"로 예상됩니다.<br>
-        <p>{{comment}}</p></h2>
+     <div style="text-align:center;">
+        <h4>이 수업의 교수님은 <b>{{ profstyle }}</b>이군요!!!</h4>
+        <h4>당신의 현재 학점은 "<b>{{ nowgrade }}</b>"로 예상됩니다.</h4>
+        <h5 style="color:grey;margin-bottom:2rem;">{{comment}}</h5>
         {% if nowgrade == 'A' %}
             <div>행복회로를 안 돌리셔도 됩니다 ^^ 홈으로 가버려~</div>
         {% else %}
